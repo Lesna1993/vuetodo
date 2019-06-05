@@ -1,18 +1,37 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Title</h1>
+    <create-task :last-id="tasks[tasks.length - 1].id" @save="addTask"></create-task>
+    <index-task all-tasks="tasks" :active="true"></index-task>
+    <index-task all-tasks="tasks" :active="false"></index-task>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import CreateTask from '@/components/Tasks/Create.vue';
+import IndexTask from '@/components/Tasks/Index.vue';
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld,
+  components: { CreateTask, IndexTask },
+  data() {
+    return {
+      tasks: [
+        {
+          text: 'First task',
+          completedBy: '',
+          completedAt: '',
+          priority: false,
+          active: true,
+          id: 0,
+        },
+      ],
+    };
+  },
+  methods: {
+    addTask(task) {
+      this.tasks.push(task);
+    },
   },
 };
 </script>
