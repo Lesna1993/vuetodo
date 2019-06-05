@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>WPISZ
+    <br />
+    ZRB
+    <br />
+    I BADZ FREE!
+  </title>
+
+  <link rel="stylesheet" type="text/css" href="./css/reset.css">
+  <link rel="stylesheet" type="text/css" href="./css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js" defer></script>
+  <script src="./js/components/Task.js" defer></script>
+  <script src="./js/app.js" defer></script>
+</head>
+
+<body>
+  <div id="app">
+    <h1>WPISZ
+      <br />
+      ZROB
+      <br />
+      I BADZ FREE!</h1>
+
+    <div class="settings">
+      <label for="tweet"></label>
+      <div class="new-tweet">
+        <input type="text" value="tweet" placeholder="New Tweet" v-model="newTweet" />
+        <button v-on:click="tweets.push(newTweet+date+active)" v-v-if="active" style: color='red'>Dodaj zadanie
+        </button>
+
+      </div>
+      <label for="date">date</label>
+      <input type="date" value="date" placeholder="date" v-model="date" />
+      <div>
+        <input type="checkbox" id="active" value="active" v-model="referrals">
+        <label for="active">Piorytet</label>
+      </div>
+
+
+
+    </div>
+
+
+
+    <br>
+    <h3>Zadaniado zrobienia</h3>
+    <div class="tweets">
+      <div class="tweet" v-for="tweet in tweets">
+
+        <p>{{ tweets }}<button v-on:click="tweets.push(newTweet+date+active)" v-v-if="active" style: color='red'>Wykonaj
+          </button><button v-on:click="tweets.push(newTweet+date+active)" v-v-if="active" style: color='red'>x
+          </button></p>
+      </div>
+    </div>
+    <h3>Zadania wykonane</h3>
+    <div class="tweets">
+      <div class="tweet" v-for="tweet in tweets">
+
+        <p>{{ tweet }}<button v-on:click="tweets.push(newTweet+date+active)" v-v-if="active" style: color='red'>Wykonaj
+          </button><button v-on:click="tweets.delete(newTweet+date+active)" v-v-if="active" style: color='red'>x
+          </button></p>
+      </div>
+    </div>
+</body>
+
+</html>
